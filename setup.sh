@@ -81,7 +81,7 @@ echo "##########################################"
 echo " "
 echo " "
 
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/RPILOTO/master/install.sh"
+sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/install.sh"
 
 echo " "
 echo " "
