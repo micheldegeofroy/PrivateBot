@@ -1,0 +1,237 @@
+############ HARDWARE & OS ########################################################################################
+
+Hardware: This script is meant to run/installed on RPI 4 this tutorial is assuming you use a Mac OSX
+OS:Raspberry Pi OS Lite (64-bit) Debian Bullseye
+FAN: Standard 12v computer fan
+OTHER: NPN Transistor, LED
+
+############ INSTALL OS ############################################################################################
+
+Start with clean OS install
+
+To do that:
+
+Use Raspberry Pi Imager to flash your SD
+
+- Download Raspberry Pi Imager >> https://www.raspberrypi.com/software/
+- Insert SD card in USB port of your Computer
+- Open Raspberry Pi Imager
+- Click Choose OS
+- Click Raspberry Pi OS (others)
+- Click Raspberry Pi OS Lite (64-bit)
+- Click Choose Storage and select your SD card
+- Click on Advanced Settings (Lower right corner)
+- Set Hostname to BTCLOTO
+- Enable SSH
+- Set User Name and Password
+- Configure Wireless Lan to connect to your Wifi (or plug device in ethernet)
+- Set Local Settings
+- Save
+- Click Write
+- Click Yes
+- Click Yes
+- Enter your computer password to authorize when prompted and ok
+- Go make some coffee (10 min Max)
+- When flash finished insert your SD card in RPI 4 and power it up
+
+############ SET UP TELEGRAM BOT #################################################################################
+
+Install Telegram on phone and your pc
+
+Then
+
+Find a Bot called BotFather
+
+Create a new bot by sending msg to BotFather /newbot
+Get token, something like 123456789:ABCdefGHKIJKlmNoPrRsTUVwxyZ
+
+Then
+
+Get Telegram chat ID
+
+To get your Telegram chat ID
+Open a chat with the Telegram BotFather by searching for "BotFather" in the Telegram search bar.
+Send the command "/myid" to the BotFather.
+
+The BotFather will reply with your Telegram chat ID, which is a unique number that identifies your chat.
+Alternatively, you can use a website like "https://t.me/my_id_bot" to get your Telegram chat id by talking to the bot.
+
+!!! You will need your chat ID and bot Token to install correctly BTCLOTO
+
+############ GENERATE BITCOIN WALLET ##############################################################################################
+
+Go to https://www.bitaddress.org/
+
+Then
+
+Generate entropy by moving your mouse around 
+
+Then
+
+Print out the screen (print button on top right)
+
+Then
+
+Copy your public address (some thing like this 13zANmpcAJRRSjTC7JP3zA4GDBjASZ7YRK)
+
+Do not share or loose the print out 
+
+!!! You will need your public Bitcoin address to compleye install
+
+############ GET API ##############################################################################################
+
+Go to https://www.blockonomics.co and sign up
+
+Then
+
+On left menu click on stores and copy the API key (something like this KR9NNX9cXq9KIiowcoDWaHKHsVakW1ZNoH0zWied5S3) 
+
+############ PRE INSTALL CHECK LIST ###############################################################################
+
+You should now have your:
+
+BOT TOKEN
+CHAT ID
+BITCOIN PUPLIC ADDRESS
+API KEY
+
+AND A BIG CUP OF COFFEE :)
+
+############ INSTALL ##############################################################################################
+
+Scan your LAN (you have to be connected to the same network as your RPI 4) (Local Area Network) with 
+iNet Network Scanner to find your RPI 4
+
+https://apps.apple.com/us/app/inet-network-scanner/id340793353
+
+Ounce you have found your RPI 4 note the device ip (something like 192.168.0.22)
+
+ssh pi@YOURDEVICEIP
+
+If you get a message like this  
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+#Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+#It is also possible that a host key has just been changed.
+#The fingerprint for the ECDSA key sent by the remote host is
+
+after the previous command use the below command and ssh again
+
+ssh-keygen -R YOURDEVICEIP
+
+Ounce logged in run the below command
+
+sudo wget https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/setup.sh && sudo bash setup.sh
+
+Then go have a cup of coffee the RPI will reboot several times takes about 30 mins to finish install
+
+Ounce install is finished your Bot will be fully operational as well as your 
+web interface which you can view at http://IPOFDEVICE/index.php
+
+N.B.
+
+Mac Changer will by defualt be enabled changing your mac address at every new reboot (ounce evry 24 hrs at midnight)
+to make it easier to login you can ssh using this command 
+
+ssh pi@BTCLOTO.local 
+
+To stop mac changer ssh into the device and execute the following commands 
+
+sudo systemctl disable mymacchanger.service && sudo reboot
+
+This will disable mac changer and reboot your device
+
+############ EXTRAS ###############################################################################################
+
+Remote Acces
+
+You will need to ssh into your device to install these services
+
+TAILS
+
+Go to https://tailscale.com/ and sign up
+
+Then
+
+Click on Downloads button top right corner
+
+Then
+
+Click on the Linux icon 
+
+copy curl -fsSL https://tailscale.com/install.sh | sh
+
+ssh into device and copy paste 
+
+sudo curl -fsSL https://tailscale.com/install.sh | sh
+
+Then
+
+sudo tailscale up
+
+Then follow link provided to authorize device
+
+PI TUNNEL
+
+pitunnel.com
+
+############ TODO ##################################################################################################
+
+Bot cmd to disable and enable mac changer
+Make nice miner web page
+
+############ RPI 4 GPIO PINOUT & LED & FAN PLAN ####################################################################
+
+#  +-----+-----+-------------------+------+---+---Pi 4B--+---+------+--------------------+-----+-----+
+#  | BCM | wPi |        Name       | Mode | V | Physical | V | Mode |         Name       | wPi | BCM |
+#  +-----+-----+-------------------+------+---+----++----+---+------+--------------------+-----+-----+
+#  |     |     |             +3.3V |      |   |  1 || 2  |   |      | +5V                |     |     |
+#  |   2 |   8 | GPIO 2    SDA   1 |   IN | 1 |  3 || 4  |   |      | +5V                |     |     |
+#  |   3 |   9 | GPIO 3    SCL   1 |   IN | 1 |  5 || 6  |   |      | GND  0V            |     |     |
+#  |   4 |   7 | GPIO 4    GPCLK 0 |   IN | 1 |  7 || 8  | 0 | ALT5 | GPIO 14    TXD   0 | 15  | 14  |
+#  |     |     |           GND  0V |      |   |  9 || 10 | 1 | ALT5 | GPIO 15    RXD   0 | 16  | 15  |
+#  |  17 |   0 |           GPIO 17 |   IN | 0 | 11 || 12 | 1 | IN   | GPIO 18    PWM   0 | 1   | 18  |
+#  |  27 |   2 |           GPIO 27 |   IN | 0 | 13 || 14 |   |      | GND  0V            |     |     |
+#  |  22 |   3 |           GPIO 22 |   IN | 0 | 15 || 16 | 0 | IN   | GPIO 23            | 4   | 23  |
+#  |     |     |             +3.3V |      |   | 17 || 18 | 0 | IN   | GPIO 24            | 5   | 24  |
+#  |  10 |  12 | GPIO 10 SPIO_MOSI | ALT0 | 0 | 19 || 20 |   |      | GND  0V            |     |     |
+#  |   9 |  13 | GPIO  9 SPIO_MISO | ALT0 | 0 | 21 || 22 | 0 | IN   | GPIO 25            | 6   | 25  |
+#  |  11 |  14 | GPIO 11 SPIO_SCLK | ALT0 | 0 | 23 || 24 | 1 | OUT  | GPIO 08 SPIO CE0 N | 10  | 8   |
+#  |     |     |           GND  0V |      |   | 25 || 26 | 1 | OUT  | GPIO 07 SPIO CE1 N | 11  | 7   |
+#  |   0 |  30 | GPIO  0   SDA   0 |   IN | 1 | 27 || 28 | 1 | IN   | GPIO  1    SCL   0 | 31  | 1   |
+#  |   5 |  21 | GPIO  5           |   IN | 1 | 29 || 30 |   |      | GND  0V            |     |     |
+#  |   6 |  22 | GPIO  6           |   IN | 1 | 31 || 32 | 0 | OUT  | GPIO 12      PWM 0 | 26  | 12  |
+#  |  13 |  23 | GPIO 13           |   IN | 0 | 33 || 34 |   |      | GND  0V            |     |     |
+#  |  19 |  24 | GPIO 19           |   IN | 0 | 35 || 36 | 0 | IN   | GPIO 16            | 27  | 16  |
+#  |  26 |  25 | GPIO 26           |   IN | 0 | 37 || 38 | 0 | IN   | GPIO 20            | 28  | 20  |
+#  |     |     |           GND  0V |      |   | 39 || 40 | 0 | IN   | GPIO 21            | 29  | 21  |
+#  +-----+-----+-------------------+------+---+----++----+---+------+--------------------+-----+-----+
+
+#  +------------------------------RED------------------------------------+
+#  |  +---------------------------BLACK--------------------------------+ |
+#  |  |                                                                | |
+#  |  |              +3.3V (1)  [.] [.] (2)  +5V                     ,,| |,,
+#  |  |  GPIO 2    SDA   1 (3)  [.] [.] (4)  +5V -------RED------+   | LED |
+#  |  |  GPIO 3    SCL   1 (5)  [.] [.] (6)  GND  0V --BLACK--+  |   '''''''
+#  |  |  GPIO 4    GPCLK 0 (7)  [.] [.] (8)  TXD   1          |  |
+#  |  +----------- GND  0V (9)  [.] [.] (10) RXD   1          |  +-------------------+
+#  +---- GPIO 17           (11) [.] [.] (12) GPIO  1 ------+  |   ,,,,,,,            |
+#        GPIO 27           (13) [.] [.] (14) GND  0V       |  +---| N T |            |
+#        GPIO 22           (15) [.] [.] (16) GPIO 23       +------| P R |            |
+#                    +3.3V (17) [.] [.] (18) GPIO 24          +---| N A |            |
+#        GPIO 10 SPIO_MOSI (19) [.] [.] (20) GND              |   |   N |            |
+#        GPIO  9 SPIO_MISO (21) [.] [.] (22) GPFS3            |   '''''''            |
+#        GPIO 11 SPIO_SCLK (23) [.] [.] (24) MOSI1            +-----BLACK----|'''''''''|
+#                  GND  0V (25) [.] [.] (26) MISO1                           |   FAN   |
+#        GPIO  0   SDA   0 (27) [.] [.] (28) SCLK1                           |         |
+#        GPIO  5           (29) [.] [.] (30) GND                             '''''''''''
+#        GPIO  6           (31) [.] [.] (32) GPFS6
+#        GPIO 13   PWM   1 (33) [.] [.] (34) GND
+#        GPIO 19           (35) [.] [.] (36) GPFS8
+#        GPIO 26           (37) [.] [.] (38) GPFS9
+#                  GND  0V (39) [.] [.] (40) GPFS10
+
+
