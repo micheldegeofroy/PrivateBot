@@ -45,7 +45,6 @@ echo " "
 
 sudo apt install php7.4 -y
 sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/index.php" -P /var/www/html/
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/miner.php" -P /var/www/html/
 sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/favicon.ico" -P /var/www/html/
 
 echo " "
@@ -217,6 +216,5 @@ sudo apt autoremove -y
 sudo apt clean -y
 sudo apt autoclean -y
 sudo rm -r install.sh
-sudo rm -r file
 echo "Reboot Now"
-sudo reboot
+#sudo reboot
