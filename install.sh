@@ -123,11 +123,11 @@ sudo pip install telepot
 sudo mkdir /home/pi/Bots/
 sudo echo "0,0" | sudo tee /home/pi/Bots/btcbalance.txt
 
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/script.py"
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/Bot.py" -P /home/pi/Bots/
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/walletcheck.py" -P /home/pi/Bots/
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/bot.service" -P /etc/systemd/system/
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/wallet.service" -P /etc/systemd/system/
+sudo wget "https://raw.githubusercontent.com/micheldegeofroy/PrivateBot/master/script.py"
+sudo wget "https://raw.githubusercontent.com/micheldegeofroy/PrivateBot/master/Bot.py" -P /home/pi/Bots/
+sudo wget "https://raw.githubusercontent.com/micheldegeofroy/PrivateBot/master/walletcheck.py" -P /home/pi/Bots/
+sudo wget "https://raw.githubusercontent.com/micheldegeofroy/PrivateBot/master/bot.service" -P /etc/systemd/system/
+sudo wget "https://raw.githubusercontent.com/micheldegeofroy/PrivateBot/master/wallet.service" -P /etc/systemd/system/
 
 # Read the first, second and third line of the botdata.txt file
 replace_value1=$(head -n 1 botdata.txt)
