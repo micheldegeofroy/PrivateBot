@@ -217,4 +217,4 @@ sudo apt clean -y
 sudo apt autoclean -y
 sudo rm -r install.sh
 echo "Reboot Now"
-#sudo reboot
+sudo reboot
