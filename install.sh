@@ -40,8 +40,8 @@ echo "##########################################"
 echo " "
 echo " "
 
-sudo swapoff --all
-sudo apt remove dphys-swapfile -y
+#sudo swapoff --all
+#sudo apt remove dphys-swapfile -y
 
 echo " "
 echo " "
@@ -71,16 +71,16 @@ echo "##########################################"
 echo " "
 echo " "
 
-sudo echo "#Watchdog On" | sudo tee -a /boot/config.txt
-sudo echo "dtparam=watchdog=on" | sudo tee -a /boot/config.txt
+#sudo echo "#Watchdog On" | sudo tee -a /boot/config.txt
+#sudo echo "dtparam=watchdog=on" | sudo tee -a /boot/config.txt
 
-sudo apt install watchdog -y
-sudo echo "watchdog-device = /dev/watchdog" | sudo tee -a /etc/watchdog.conf
-sudo echo "watchdog-timeout = 15" | sudo tee -a /etc/watchdog.conf
-sudo echo "max-load-1 = 24" | sudo tee -a /etc/watchdog.conf
+#sudo apt install watchdog -y
+#sudo echo "watchdog-device = /dev/watchdog" | sudo tee -a /etc/watchdog.conf
+#sudo echo "watchdog-timeout = 15" | sudo tee -a /etc/watchdog.conf
+#sudo echo "max-load-1 = 24" | sudo tee -a /etc/watchdog.conf
 
-sudo systemctl enable watchdog
-sudo systemctl start watchdog
+#sudo systemctl enable watchdog
+#sudo systemctl start watchdog
 
 echo " "
 echo " "
@@ -90,9 +90,9 @@ echo "##########################################"
 echo " "
 echo " "
 
-echo net.ipv6.conf.all.disable_ipv6=1 | sudo tee /etc/sysctl.d/disable-ipv6.conf
-sysctl --system
-sudo sed -i -e 's/$/ipv6.disable=1/' /boot/cmdline.txt
+#echo net.ipv6.conf.all.disable_ipv6=1 | sudo tee /etc/sysctl.d/disable-ipv6.conf
+#sysctl --system
+#sudo sed -i -e 's/$/ipv6.disable=1/' /boot/cmdline.txt
 
 echo " "
 echo " "
@@ -102,10 +102,10 @@ echo "##########################################"
 echo " "
 echo " "
 
-sudo echo "# Disable Bluetooth" | sudo tee -a /boot/config.txt
-sudo echo "dtoverlay=disable-bt" | sudo tee -a /boot/config.txt
-sudo systemctl disable hciuart.service 
-sudo systemctl disable bluetooth.service
+#sudo echo "# Disable Bluetooth" | sudo tee -a /boot/config.txt
+#sudo echo "dtoverlay=disable-bt" | sudo tee -a /boot/config.txt
+#sudo systemctl disable hciuart.service 
+#sudo systemctl disable bluetooth.service
  
 echo " "
 echo " "
@@ -169,8 +169,8 @@ echo "##########################################"
 echo " "
 echo " "
 
-sudo rm -r /etc/motd
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/PrivateBot/master/motd" -P /etc/
+#sudo rm -r /etc/motd
+#sudo wget "https://raw.githubusercontent.com/micheldegeofroy/PrivateBot/master/motd" -P /etc/
 
 echo " "
 echo " "
@@ -180,11 +180,11 @@ echo "##########################################"
 echo " "
 echo " "
 
-mkdir -p /etc/update-motd.d/
+#mkdir -p /etc/update-motd.d/
 
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/PrivateBot/master/ssh-welcome" -P /etc/update-motd.d/
+#sudo wget "https://raw.githubusercontent.com/micheldegeofroy/PrivateBot/master/ssh-welcome" -P /etc/update-motd.d/
 
-sudo chmod +x /etc/update-motd.d/ssh-welcome
+#sudo chmod +x /etc/update-motd.d/ssh-welcome
 
 echo " "
 echo " "
