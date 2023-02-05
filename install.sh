@@ -35,18 +35,6 @@ sudo apt install git -y
 echo " "
 echo " "
 echo "##########################################"
-echo "Web Interface"
-echo "##########################################"
-echo " "
-echo " "
-
-sudo apt install php7.4 -y
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/index.php" -P /var/www/html/
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/favicon.ico" -P /var/www/html/
-
-echo " "
-echo " "
-echo "##########################################"
 echo "Disable Swap"
 echo "##########################################"
 echo " "
@@ -131,7 +119,6 @@ sudo pip install bitcoin
 sudo pip install requests
 sudo pip3 install python-telegram-bot==13.15 --upgrade
 sudo pip install telepot
-sudo pip install RPi.GPIO
 
 sudo mkdir /home/pi/Bots/
 sudo echo "0,0" | sudo tee /home/pi/Bots/btcbalance.txt
@@ -183,7 +170,7 @@ echo " "
 echo " "
 
 sudo rm -r /etc/motd
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/motd" -P /etc/
+sudo wget "https://raw.githubusercontent.com/micheldegeofroy/PrivateBot/master/motd" -P /etc/
 
 echo " "
 echo " "
@@ -195,7 +182,7 @@ echo " "
 
 mkdir -p /etc/update-motd.d/
 
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/ssh-welcome" -P /etc/update-motd.d/
+sudo wget "https://raw.githubusercontent.com/micheldegeofroy/PrivateBot/master/ssh-welcome" -P /etc/update-motd.d/
 
 sudo chmod +x /etc/update-motd.d/ssh-welcome
 
