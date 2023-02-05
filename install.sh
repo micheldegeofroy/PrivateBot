@@ -16,7 +16,7 @@ echo " "
 echo " "
 
 echo $(crontab -r)
-sudo rm setup.sh
+echo $(sudo rm setup.sh)
 
 echo " "
 echo " "
