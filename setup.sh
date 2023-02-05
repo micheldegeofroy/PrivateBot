@@ -16,16 +16,6 @@ sudo apt upgrade -y
 echo " "
 echo " "
 echo "##########################################"
-echo "Set Priviliges for www-data"
-echo "##########################################"
-echo " "
-echo " "
-
-sudo usermod -a -G sudo www-data
-
-echo " "
-echo " "
-echo "##########################################"
 echo "Get Bot Token and Admin Chat ID"
 echo "##########################################"
 echo " "
@@ -81,7 +71,7 @@ echo "##########################################"
 echo " "
 echo " "
 
-sudo wget "https://raw.githubusercontent.com/micheldegeofroy/CanToniBot/master/install.sh"
+sudo wget "https://raw.githubusercontent.com/micheldegeofroy/PrivateBot/master/install.sh"
 
 echo " "
 echo " "
