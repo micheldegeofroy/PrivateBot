@@ -1,7 +1,7 @@
 ############ HARDWARE & OS ########################################################################################
 
-Hardware: This script is meant to run/installed on RPI 4 this tutorial is assuming you use a Mac OSX
-OS:Raspberry Pi OS Lite (64-bit) Debian Bullseye
+Hardware: This script is meant to run/installed on RPI Model B+ V1.2 2014 this tutorial is assuming you use a Mac OSX
+OS:Raspberry Pi OS Lite (32-bit) Debian Bullseye
 FAN: Standard 12v computer fan
 OTHER: NPN Transistor, LED
 
