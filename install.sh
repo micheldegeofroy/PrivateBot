@@ -15,7 +15,7 @@ echo "##########################################"
 echo " "
 echo " "
 
-crontab -r
+echo $(crontab -r)
 sudo rm setup.sh
 
 echo " "
