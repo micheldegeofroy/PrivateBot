@@ -37,7 +37,6 @@ sudo nano /Bots/Bot.py
  
 OTHER
 To reload this Splash Screen: sudo run-parts --lsbsysinit /etc/update-motd.d
-To edit the Web Monitor script: sudo nano /var/www/html/index.php
 To edit the Login Welcome script: sudo nano /etc/update-motd.d/ssh-welcome
 To launch Glances: glances
 To Add to this splash screen edit with sudo nano  /etc/motd
