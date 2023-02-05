@@ -21,7 +21,7 @@ Use Raspberry Pi Imager to flash your SD
 - Click Raspberry Pi OS Lite (64-bit)
 - Click Choose Storage and select your SD card
 - Click on Advanced Settings (Lower right corner)
-- Set Hostname to BTCLOTO
+- Set Hostname to CANTONI
 - Enable SSH
 - Set User Name and Password
 - Configure Wireless Lan to connect to your Wifi (or plug device in ethernet)
@@ -108,6 +108,10 @@ Ounce you have found your RPI 4 note the device ip (something like 192.168.0.22)
 
 ssh pi@YOURDEVICEIP
 
+OR
+
+ssh pi@CANTONI.local 
+
 If you get a message like this  
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -136,7 +140,7 @@ N.B.
 Mac Changer will by defualt be enabled changing your mac address at every new reboot (ounce evry 24 hrs at midnight)
 to make it easier to login you can ssh using this command 
 
-ssh pi@BTCLOTO.local 
+ssh pi@CANTONI.local 
 
 To stop mac changer ssh into the device and execute the following commands 
 
